@@ -1,0 +1,9 @@
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser\bin\Release\netstandard1.1\SD.Parser.deps.json
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser\bin\Release\netstandard1.1\SD.Parser.dll
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser\bin\Release\netstandard1.1\SD.Parser.pdb
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser\obj\Release\netstandard1.1\SD.Parser.csprojAssemblyReference.cache
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser\obj\Release\netstandard1.1\SD.Parser.csproj.CoreCompileInputs.cache
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser\obj\Release\netstandard1.1\SD.Parser.AssemblyInfoInputs.cache
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser\obj\Release\netstandard1.1\SD.Parser.AssemblyInfo.cs
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser\obj\Release\netstandard1.1\SD.Parser.dll
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser\obj\Release\netstandard1.1\SD.Parser.pdb

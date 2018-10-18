@@ -1,0 +1,11 @@
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\bin\Release\SD.Parser.Excuter.dll
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\bin\Release\SD.Parser.Excuter.pdb
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\bin\Release\SD.Parser.dll
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\bin\Release\Z.Expressions.Eval.dll
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\bin\Release\SD.Parser.pdb
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\bin\Release\Z.Expressions.Eval.xml
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\obj\Release\SD.Parser.Excuter.csprojAssemblyReference.cache
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\obj\Release\SD.Parser.Excuter.csproj.CoreCompileInputs.cache
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\obj\Release\SD.Parser.Excuter.csproj.CopyComplete
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\obj\Release\SD.Parser.Excuter.dll
+E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\obj\Release\SD.Parser.Excuter.pdb
