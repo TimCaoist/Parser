@@ -9,7 +9,7 @@ namespace SD.Parser.Excuter.Standard
     {
         public IEnumerable<Assembly> GetAssemblies(string typeName)
         {
-            return System.AppDomain.CurrentDomain.GetAssemblies().Where(a => !a.FullName.StartsWith("system")).ToArray();
+            return System.AppDomain.CurrentDomain.GetAssemblies().Where(a => !a.IsDynamic && !a.FullName.StartsWith("system", System.StringComparison.OrdinalIgnoreCase)).ToArray();
         }
     }
 }

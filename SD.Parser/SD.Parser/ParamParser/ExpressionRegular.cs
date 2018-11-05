@@ -5,7 +5,7 @@ namespace SD.Parser.ParamParser
 {
     public class ExpressionRegular : Interface.IItemRegular
     {
-        private readonly static string ExpressInvoke = "ExpInvoke";
+        private readonly static string ExpressInvoke = "SD.Parser.Util.ExpressionInvoke.ExpInvoke";
 
         public string Regular(string expression, ExpressionInfo expressionInfo)
         {

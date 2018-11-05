@@ -7,7 +7,7 @@ namespace SD.Parser.Util.Interface
 {
     public interface IExcuter
     {
-        TResult Execute<TResult>(string expression, object paramDatas);
+        TResult Execute<TResult>(string name, string expression, object paramDatas, IEnumerable<ParamInfo> paramInfos);
 
         void RegisterGlobalVariable(string name, object val);
 

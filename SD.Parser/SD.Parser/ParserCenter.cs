@@ -1,13 +1,12 @@
 ﻿using SD.Parser.Analyse.Interface;
 using SD.Parser.Analyse.Models;
 using SD.Parser.Models;
+using SD.Parser.ParamParser;
 using SD.Parser.Util;
 using SD.Parser.Util.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.CodeDom;
-using System.CodeDom.Compiler;
 
 namespace SD.Parser
 {
@@ -32,10 +31,10 @@ namespace SD.Parser
 
         public static TResult Evals<TResult>(Expression expression, IDictionary<string, object> datas = null)
         {
-            return Evals<TResult>(expression.Data, expression, datas);
+            return Evals<TResult>(expression.Data, expression.Name, expression, datas);
         }
 
-        public static TResult Evals<TResult>(string expressionStr, Expression expression, object data = null)
+        public static TResult Evals<TResult>(string expressionStr, string name, Expression expression, object data = null)
         {
             if (string.IsNullOrEmpty(expression.Data))
             {
@@ -53,13 +52,12 @@ namespace SD.Parser
             var excuterCreator = UtilContainer.Resolve<IExcuterCreator>();
             var context = excuterCreator.BuildExcuter();
             RegisterBasicType(context, expression);
-            return context.Execute<TResult>(format, data);
+            return context.Execute<TResult>(name, format, data, ParamConvert.GetParamInfos(data));
         }
 
         private static void RegisterBasicType(IExcuter context, Expression expression)
         {
             context.Register(expression);
-            
             context.RegisterType(typeof(Expression));
             context.RegisterGlobalVariable(GLOBAL_EPXRESSION_NAME, expression);
             context.RegisterStaticMember(typeof(ExpressionInvoke));
