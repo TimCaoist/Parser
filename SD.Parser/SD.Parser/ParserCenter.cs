@@ -25,6 +25,7 @@ namespace SD.Parser
         {
             return Evals<TResult>(new Expression
             {
+                Name = "template_" + expression.GetHashCode(),
                 Data = expression
             }, datas);
         }

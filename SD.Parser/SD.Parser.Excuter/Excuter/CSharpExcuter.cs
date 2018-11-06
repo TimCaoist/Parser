@@ -1,5 +1,4 @@
-﻿using SD.Parser.Excuter.Standard;
-using SD.Parser.Models;
+﻿using SD.Parser.Models;
 using SD.Parser.ParamParser;
 using SD.Parser.Util.Interface;
 using System;
@@ -21,7 +20,7 @@ namespace SD.Parser.Excuter.Excuter
         {
             var allParamInfos = globalVariables.Union(paramInfos).Distinct().ToArray();
             var datas = allParamInfos.Select(a => a.Data).ToArray();
-            dynamic target;
+            dynamic target = null;
             if (expressions.TryGetValue(name, out target))
             {
                 return target.Calculate(datas);

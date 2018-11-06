@@ -10,3 +10,15 @@ E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Pareser.Excuter.Standard\obj\Debug
 E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Pareser.Excuter.Standard\bin\Debug\netstandard2.0\SD.Pareser.Excuter.Standard.pdb
 E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Pareser.Excuter.Standard\obj\Debug\netstandard2.0\SD.Pareser.Excuter.Standard.dll
 E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Pareser.Excuter.Standard\obj\Debug\netstandard2.0\SD.Pareser.Excuter.Standard.pdb
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\bin\Debug\netstandard2.0\SD.Pareser.Excuter.Standard.deps.json
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\bin\Debug\netstandard2.0\SD.Pareser.Excuter.Standard.dll
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\bin\Debug\netstandard2.0\SD.Pareser.Excuter.Standard.pdb
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\bin\Debug\netstandard2.0\SD.Parser.dll
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\bin\Debug\netstandard2.0\SD.Parser.pdb
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\obj\Debug\netstandard2.0\SD.Pareser.Excuter.Standard.csprojAssemblyReference.cache
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\obj\Debug\netstandard2.0\SD.Pareser.Excuter.Standard.csproj.CoreCompileInputs.cache
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\obj\Debug\netstandard2.0\SD.Pareser.Excuter.Standard.AssemblyInfoInputs.cache
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\obj\Debug\netstandard2.0\SD.Pareser.Excuter.Standard.AssemblyInfo.cs
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\obj\Debug\netstandard2.0\SD.Pareser.Excuter.Standard.csproj.CopyComplete
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\obj\Debug\netstandard2.0\SD.Pareser.Excuter.Standard.dll
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\obj\Debug\netstandard2.0\SD.Pareser.Excuter.Standard.pdb

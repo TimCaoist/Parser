@@ -16,3 +16,9 @@ E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\obj\Release\netstandar
 E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\obj\Release\netstandard2.0\SD.Pareser.Excuter.Standard.AssemblyInfo.cs
 E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\obj\Release\netstandard2.0\SD.Pareser.Excuter.Standard.dll
 E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\obj\Release\netstandard2.0\SD.Pareser.Excuter.Standard.pdb
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\bin\Release\netstandard2.0\SD.Pareser.Excuter.Standard.deps.json
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\bin\Release\netstandard2.0\SD.Pareser.Excuter.Standard.dll
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\bin\Release\netstandard2.0\SD.Pareser.Excuter.Standard.pdb
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\bin\Release\netstandard2.0\SD.Parser.dll
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\bin\Release\netstandard2.0\SD.Parser.pdb
+E:\git代码\Parser\SD.Parser\SD.Pareser.Excuter.Standard\obj\Release\netstandard2.0\SD.Pareser.Excuter.Standard.csproj.CopyComplete

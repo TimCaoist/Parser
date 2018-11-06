@@ -14,3 +14,9 @@ E:\git代码\sd.plamclass.com.v2\SD.Parser\ConsoleApp1\bin\Release\netcoreapp2.1
 E:\git代码\sd.plamclass.com.v2\SD.Parser\ConsoleApp1\obj\Release\netcoreapp2.1\ConsoleApp1.csproj.CopyComplete
 E:\git代码\sd.plamclass.com.v2\SD.Parser\ConsoleApp1\obj\Release\netcoreapp2.1\ConsoleApp1.dll
 E:\git代码\sd.plamclass.com.v2\SD.Parser\ConsoleApp1\obj\Release\netcoreapp2.1\ConsoleApp1.pdb
+E:\git代码\Parser\SD.Parser\ConsoleApp1\obj\Release\netcoreapp2.1\ConsoleApp1.csprojAssemblyReference.cache
+E:\git代码\Parser\SD.Parser\ConsoleApp1\obj\Release\netcoreapp2.1\ConsoleApp1.csproj.CoreCompileInputs.cache
+E:\git代码\Parser\SD.Parser\ConsoleApp1\obj\Release\netcoreapp2.1\ConsoleApp1.AssemblyInfoInputs.cache
+E:\git代码\Parser\SD.Parser\ConsoleApp1\obj\Release\netcoreapp2.1\ConsoleApp1.AssemblyInfo.cs
+E:\git代码\Parser\SD.Parser\ConsoleApp1\obj\Release\netcoreapp2.1\ConsoleApp1.dll
+E:\git代码\Parser\SD.Parser\ConsoleApp1\obj\Release\netcoreapp2.1\ConsoleApp1.pdb

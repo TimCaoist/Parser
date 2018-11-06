@@ -6,12 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="2.9.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="2.9.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\SD.Pareser.Excuter.Standard\SD.Pareser.Excuter.Standard.csproj" />
+    <ProjectReference Include="..\SD.Parser.Excuter.Std\SD.Parser.Excuter.Std.csproj" />
     <ProjectReference Include="..\SD.Parser\SD.Parser.csproj" />
   </ItemGroup>
 

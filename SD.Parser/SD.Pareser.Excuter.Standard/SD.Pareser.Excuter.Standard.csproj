@@ -1,11 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard1.3</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Z.Expressions.Eval" Version="2.7.9" />
+    <Compile Include="..\SD.Parser.Excuter\AssemblyLoader.cs" Link="AssemblyLoader.cs" />
+    <Compile Include="..\SD.Parser.Excuter\Config.cs" Link="Config.cs" />
+    <Compile Include="..\SD.Parser.Excuter\Excuter\CodeBuild.cs" Link="Excuter\CodeBuild.cs" />
+    <Compile Include="..\SD.Parser.Excuter\Excuter\CSharpExcuter.cs" Link="Excuter\CSharpExcuter.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="2.9.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="2.9.0" />
   </ItemGroup>
 
   <ItemGroup>

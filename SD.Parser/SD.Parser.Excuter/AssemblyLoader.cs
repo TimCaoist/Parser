@@ -3,7 +3,7 @@ using System.Reflection;
 using SD.Parser.Util.Interface;
 using System.Linq;
 
-namespace SD.Parser.Excuter.Standard
+namespace SD.Parser.Excuter
 {
     public class AssemblyLoader : IAssemblyLoader
     {

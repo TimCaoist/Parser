@@ -2,7 +2,7 @@
 using SD.Parser.Util;
 using SD.Parser.Util.Interface;
 
-namespace SD.Parser.Excuter.Standard
+namespace SD.Parser.Excuter
 {
     public static class Config
     {
