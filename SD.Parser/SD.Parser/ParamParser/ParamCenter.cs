@@ -1,13 +1,18 @@
-﻿using SD.Parser.Analyse.Models;
+﻿using SD.Parser.Analyse.Interface;
+using SD.Parser.Analyse.Models;
+using SD.Parser.Models;
+using SD.Parser.Util;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SD.Parser.ParamParser
 {
     public class ParamCenter : Interface.IParamRegular
     {
-        public string Regular(string expression, IEnumerable<ExpressionInfo> expressionInfos)
+        public string Regular(string expression, IEnumerable<ExpressionInfo> expressionInfos, Expression exps, IEnumerable<Type> staticTypes)
         {
-            foreach (var expressionInfo in expressionInfos)
+            foreach (var expressionInfo in expressionInfos.OrderByDescending(e => e.StartIndex))
             {
                 var regular = Create(expressionInfo);
                 if (regular == null)
@@ -15,10 +20,10 @@ namespace SD.Parser.ParamParser
                     continue;
                 }
 
-                expression = regular.Regular(expression, expressionInfo);
+                expression = regular.Regular(expression, expressionInfo, exps, staticTypes);
             }
 
-            var keyWordProvider = Util.UtilContainer.Resolve<Analyse.Interface.IKeyWordProvider>();
+            IKeyWordProvider keyWordProvider = UtilContainer.Resolve<IKeyWordProvider>();
             return expression.Replace(keyWordProvider.Param, string.Empty);
         }
 
@@ -28,6 +33,8 @@ namespace SD.Parser.ParamParser
             {
                 case ParamMode.Expression:
                     return Util.UtilContainer.Resolve<ExpressionRegular>();
+                case ParamMode.Func:
+                    return Util.UtilContainer.Resolve<FuncRegular>();
             }
 
             return null;

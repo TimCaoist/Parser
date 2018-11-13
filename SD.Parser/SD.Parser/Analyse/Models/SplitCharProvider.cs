@@ -7,13 +7,14 @@ namespace SD.Parser.Analyse.Models
 {
     public class KeyWordProvider : IKeyWordProvider
     {
+        public virtual string Param => "@";
 
-        public string Param => "@";
+        public virtual char[] SplitChar { get; } = new char[] { ' ', ',', ')', '(', ';' };
 
-        public char[] SplitChar { get; } = new char[] { ' ', ',', ')', '(', ';' };
+        public virtual string ExpressionString => "exp_";
 
-        public string ExpressionString => "exp_";
+        public virtual char ExpressionSplitChar => '_';
 
-        public char ExpressionSplitChar => '_';
+        public virtual string FuncString => "func_";
     }
 }

@@ -14,12 +14,14 @@ namespace SD.Parser.Util
 
         static UtilContainer()
         {
+            Use<ILogger>(new DefaultLogger());
             Use<IAnalyse>(new AnalyseCenter());
             Use<ITypeFetch>(new TypeFetch());
             Use<IKeyWordProvider>(new KeyWordProvider());
             Use<IExpressionInfoBuilder>(new ExpressionInfoBuilder());
             Use<ParamParser.Interface.IParamRegular>(new ParamCenter());
             Use(new ExpressionRegular());
+            Use(new FuncRegular());
         }
 
         public static void UseExcuter(Func<IExcuter> create)

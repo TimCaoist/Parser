@@ -13,5 +13,7 @@ namespace SD.Parser.Analyse.Interface
         char[] SplitChar { get; }
 
         char ExpressionSplitChar { get;  }
+
+        string FuncString { get; }
     }
 }

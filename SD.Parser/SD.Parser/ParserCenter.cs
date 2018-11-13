@@ -14,6 +14,25 @@ namespace SD.Parser
     {
         public const string GLOBAL_EPXRESSION_NAME = "global_epxression_name";
 
+        private readonly static List<Type> GLOBAL_TYPES = new List<Type>();
+
+        private readonly static List<Type> GLOBAL_STATIC_TYPES = new List<Type>();
+
+        static ParserCenter()
+        {
+            RegisterGloabalTypes(typeof(Expression), typeof(ExpressionInvoke));
+        }
+
+        public static void RegisterGloabalTypes(params Type[] types)
+        {
+            GLOBAL_TYPES.AddRange(types);
+        }
+
+        public static void RegisterStaticGlobalTypes(params Type[] types)
+        {
+            GLOBAL_STATIC_TYPES.AddRange(types);
+        }
+
         public static IEnumerable<ExpressionInfo> Analyse(string expression)
         {
             var analyse = UtilContainer.Resolve<IAnalyse>();
@@ -25,7 +44,7 @@ namespace SD.Parser
         {
             return Evals<TResult>(new Expression
             {
-                Name = "template_" + expression.GetHashCode(),
+                Name = string.Concat("template_", Guid.NewGuid().ToString().Replace("-", string.Empty)),
                 Data = expression
             }, datas);
         }
@@ -37,9 +56,9 @@ namespace SD.Parser
 
         public static TResult Evals<TResult>(string expressionStr, string name, Expression expression, object data = null)
         {
-            if (string.IsNullOrEmpty(expression.Data))
+            if (string.IsNullOrEmpty(expressionStr))
             {
-                throw new ArgumentNullException(nameof(expression.Data));
+                throw new ArgumentNullException(nameof(expressionStr));
             }
 
             var infos = Analyse(expressionStr);
@@ -47,7 +66,7 @@ namespace SD.Parser
             if (infos.Any())
             {
                 var parser = UtilContainer.Resolve<ParamParser.Interface.IParamRegular>();
-                format = parser.Regular(format, infos);
+                format = parser.Regular(format, infos, expression, GLOBAL_STATIC_TYPES);
             }
 
             var excuterCreator = UtilContainer.Resolve<IExcuterCreator>();
@@ -59,9 +78,9 @@ namespace SD.Parser
         private static void RegisterBasicType(IExcuter context, Expression expression)
         {
             context.Register(expression);
-            context.RegisterType(typeof(Expression));
+            context.RegisterStaticMember(GLOBAL_STATIC_TYPES.ToArray());
+            context.RegisterType(GLOBAL_TYPES.ToArray());
             context.RegisterGlobalVariable(GLOBAL_EPXRESSION_NAME, expression);
-            context.RegisterStaticMember(typeof(ExpressionInvoke));
         }
     }
 }

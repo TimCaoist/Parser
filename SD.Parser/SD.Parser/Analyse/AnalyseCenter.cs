@@ -18,8 +18,19 @@ namespace SD.Parser.Analyse
             }
 
             IExpressionInfoBuilder builder = UtilContainer.Resolve<IExpressionInfoBuilder>();
-            var paramStrArray = expression.Split(keyWordProvider.SplitChar).Where(s => s.StartsWith(param)).Select(s => s.Replace(param, string.Empty)).ToArray();
-            return paramStrArray.Select(p => builder.Build(expression, p, keyWordProvider)).ToArray();
+
+            ICollection<ExpressionInfo> expressionInfos = new List<ExpressionInfo>();
+            var paramStrArray = expression.Split(keyWordProvider.SplitChar).Where(p => p.StartsWith(keyWordProvider.Param)).Select(p => p.Replace(keyWordProvider.Param, string.Empty)).ToArray();
+            int index = 0;
+            foreach (var paramStr in paramStrArray)
+            {
+                var ei = builder.Build(expression, paramStr, keyWordProvider);
+                ei.StartIndex = expression.IndexOf(paramStr, index);
+                index = paramStr.Length + ei.StartIndex;
+                expressionInfos.Add(ei);
+            }
+            
+            return expressionInfos;
         }
     }
 }

@@ -7,6 +7,6 @@ namespace SD.Parser.ParamParser.Interface
 {
     public interface IItemRegular
     {
-        string Regular(string expression, ExpressionInfo expressionInfo);
+        string Regular(string expression, ExpressionInfo expressionInfo, Models.Expression exps, IEnumerable<Type> staticTypes);
     }
 }

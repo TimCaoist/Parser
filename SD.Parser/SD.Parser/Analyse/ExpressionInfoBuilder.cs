@@ -1,8 +1,6 @@
 ﻿using SD.Parser.Analyse.Interface;
 using SD.Parser.Analyse.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SD.Parser.Analyse
 {
@@ -10,7 +8,19 @@ namespace SD.Parser.Analyse
     {
         public ExpressionInfo Build(string expression, string paramStr, IKeyWordProvider provider)
         {
-            var mode = paramStr.StartsWith(provider.ExpressionString) ? ParamMode.Expression : ParamMode.Param;
+            ParamMode mode;
+            if (paramStr.StartsWith(provider.ExpressionString))
+            {
+                mode = ParamMode.Expression;
+            }
+            else if (paramStr.StartsWith(provider.FuncString))
+            {
+                mode = ParamMode.Func;
+            }
+            else {
+                mode = ParamMode.Param;
+            }
+
             return Build(expression, mode, paramStr, provider);
         }
 
@@ -20,15 +30,32 @@ namespace SD.Parser.Analyse
             switch (mode)
             {
                 case ParamMode.Expression:
-                    var relatedExpressionInfo = new RelatedExpressionInfo();
-                    var strArry = paramStr.Replace(provider.ExpressionString, string.Empty).Split(provider.ExpressionSplitChar);
-                    relatedExpressionInfo.InvokeName = strArry[0];
-                    if (strArry.Length == 2)
                     {
-                        relatedExpressionInfo.ReturnTypeName = strArry[1];
-                    }
+                        var relatedExpressionInfo = new RelatedExpressionInfo();
+                        var strArry = paramStr.Replace(provider.ExpressionString, string.Empty).Split(provider.ExpressionSplitChar);
+                        relatedExpressionInfo.InvokeName = strArry[0];
+                        if (strArry.Length == 2)
+                        {
+                            relatedExpressionInfo.ReturnTypeName = strArry[1];
+                        }
 
-                    expressionInfo = relatedExpressionInfo;
+                        expressionInfo = relatedExpressionInfo;
+                    }
+                   
+                    break;
+                case ParamMode.Func:
+                    {
+                        var funcExpressionInfo = new FuncExpressionInfo();
+                        var strArry = paramStr.Replace(provider.FuncString, string.Empty).Split(provider.ExpressionSplitChar);
+                        funcExpressionInfo.Name = strArry[0];
+                        if (strArry.Length > 1)
+                        {
+                            funcExpressionInfo.InvokeName = strArry[1];
+                        }
+
+                        expressionInfo = funcExpressionInfo;
+                    }
+                   
                     break;
                 default:
                     expressionInfo = new ExpressionInfo();
@@ -36,7 +63,6 @@ namespace SD.Parser.Analyse
             }
 
             expressionInfo.Mode = mode;
-            expressionInfo.StartIndex = expression.IndexOf(paramStr);
             expressionInfo.Str = paramStr;
 
             return expressionInfo;

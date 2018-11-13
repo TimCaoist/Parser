@@ -9,6 +9,8 @@ namespace SD.Parser.Util.Interface
     {
         Type FetchType(string name);
 
+        bool HasMethod(Type type, string name);
+
         IEnumerable<ParamInfo> GetParamInfos(object obj, Type type);
     }
 }

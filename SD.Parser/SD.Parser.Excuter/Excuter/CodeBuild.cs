@@ -1,12 +1,15 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using SD.Parser.Models;
+using SD.Parser.Util;
+using SD.Parser.Util.Interface;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SD.Parser.Excuter.Excuter
 {
@@ -20,7 +23,11 @@ namespace SD.Parser.Excuter.Excuter
 
         private const string ClassPlaceHolder = "[classname]";
 
-        private const string ParamFormat = "var {0} = ({1})datas[{2}];";
+        private const string NameSpaceHolder = "[namespace]";
+
+        private const string ParamFormat = "var {0} = datas.GetVal<{1}>(\"{0}\");";
+
+        private const string NameSpaceFormat = "using {0};";
 
         private readonly static IEnumerable<string> locations;
 
@@ -29,24 +36,26 @@ namespace SD.Parser.Excuter.Excuter
             locations = AppDomain.CurrentDomain.GetAssemblies().Where(x => !x.IsDynamic && !string.IsNullOrEmpty(x.Location)).Select(x => x.Location).ToArray();
         }
 
-        public static Type Build(string templeFileName, string expression, string className, IEnumerable<ParamInfo> paramInfos)
+        public static Type Build(string templeFileName, string expression, string className, IEnumerable<ParamInfo> paramInfos, IEnumerable<string> nameSpaces)
         {
-            var tempFile = BuildCode(className, templeFileName, expression, paramInfos);
+            var tempFile = BuildCode(className, templeFileName, expression, paramInfos, nameSpaces);
+            ILogger logger = UtilContainer.Resolve<ILogger>();
+            logger.Info(string.Concat("code template:", tempFile));
             var type = BuildType(tempFile, className);
             return type;
         }
 
-    public static string BuildCode(string className, string templeFileName, string expression, IEnumerable<ParamInfo> paramInfos)
+        public static string BuildCode(string className, string templeFileName, string expression, IEnumerable<ParamInfo> paramInfos, IEnumerable<string> nameSpacess)
         {
             var tempFile = File.ReadAllText(templeFileName);
             tempFile = tempFile.Replace(CodePlaceHolder, expression);
             tempFile = tempFile.Replace(ClassPlaceHolder, className);
-
+            tempFile = tempFile.Replace(NameSpaceHolder, string.Join(string.Empty, nameSpacess.Distinct().Select(ns => string.Format(NameSpaceFormat, ns))));
             var paramStr = new StringBuilder();
             for (var i = 0; i < paramInfos.Count(); i++)
             {
                 var paramInfo = paramInfos.ElementAt(i);
-                paramStr.AppendFormat(ParamFormat, paramInfo.Name, paramInfo.TypeName, i);
+                paramStr.AppendFormat(ParamFormat, paramInfo.Name, paramInfo.TypeName);
             }
             
             tempFile = tempFile.Replace(ParamPlaceHolder, paramStr.ToString());
@@ -62,7 +71,6 @@ namespace SD.Parser.Excuter.Excuter
 
         private static Type CompileType(string originalClassName, IEnumerable<SyntaxTree> syntaxTrees)
         {
-            // 指定编译选项。
             var assemblyName = $"{originalClassName}.g";
             var compilation = CSharpCompilation.Create(assemblyName, syntaxTrees,
                     options: new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary))
@@ -78,6 +86,9 @@ namespace SD.Parser.Excuter.Excuter
                     var assembly = Assembly.Load(ms.ToArray());
                     return assembly.GetTypes().First(x => x.Name == originalClassName);
                 }
+
+                ILogger logger = UtilContainer.Resolve<ILogger>();
+                logger.Warning(string.Join("\r\n", result.Diagnostics.Select(d => d.ToString())));
 
                 throw new ArgumentException(string.Join(string.Intern(";"), result.Diagnostics.Select(d => d.ToString())));
             }

@@ -59,5 +59,11 @@ namespace SD.Parser.Util
 
             return paramInfos;
         }
+
+        public bool HasMethod(Type type, string name)
+        {
+            var methods = type.GetRuntimeMethods();
+            return methods.Any(m => m.Name == name);
+        }
     }
 }

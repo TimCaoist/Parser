@@ -9,5 +9,6 @@ namespace SD.Parser.Analyse.Models
         Param = 0,
 
         Expression = 1,
+        Func = 2,
     }
 }

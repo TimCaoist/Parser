@@ -4,7 +4,6 @@ using SD.Parser.Util.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace SD.Parser.Excuter.Excuter
 {
@@ -12,14 +11,14 @@ namespace SD.Parser.Excuter.Excuter
     {
         private readonly ICollection<ParamInfo> globalVariables = new List<ParamInfo>();
 
-        private readonly List<Assembly> assemblies = new List<Assembly>();
+        private readonly List<string> nameSpaces = new List<string>();
 
         private static Dictionary<string, dynamic> expressions = new Dictionary<string, dynamic>();
 
         public TResult Execute<TResult>(string name, string expression, object paramDatas, IEnumerable<ParamInfo> paramInfos)
         {
             var allParamInfos = globalVariables.Union(paramInfos).Distinct().ToArray();
-            var datas = allParamInfos.Select(a => a.Data).ToArray();
+            var datas = allParamInfos.ToDictionary(d => d.Name, d => d.Data);
             dynamic target = null;
             if (expressions.TryGetValue(name, out target))
             {
@@ -34,7 +33,7 @@ namespace SD.Parser.Excuter.Excuter
                     return target.Calculate(datas);
                 }
 
-                var type = CodeBuild.Build(Config.TemplateCodePath, expression, name, allParamInfos);
+                var type = CodeBuild.Build(Config.TemplateCodePath, expression, name, allParamInfos, nameSpaces);
                 instance = Activator.CreateInstance(type);
                 expressions.Add(name, instance);
             }
@@ -65,7 +64,7 @@ namespace SD.Parser.Excuter.Excuter
 
         public void RegisterType(params Type[] type)
         {
-            assemblies.AddRange(type.Select(t => t.Assembly));
+            nameSpaces.AddRange(type.Select(t => t.Namespace));
         }
     }
 }

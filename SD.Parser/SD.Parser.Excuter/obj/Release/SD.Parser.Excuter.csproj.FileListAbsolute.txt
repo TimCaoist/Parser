@@ -9,3 +9,4 @@ E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\obj\Release\SD.Pars
 E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\obj\Release\SD.Parser.Excuter.csproj.CopyComplete
 E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\obj\Release\SD.Parser.Excuter.dll
 E:\git代码\sd.plamclass.com.v2\SD.Parser\SD.Parser.Excuter\obj\Release\SD.Parser.Excuter.pdb
+E:\git代码\Parser\SD.Parser\SD.Parser.Excuter\obj\Release\SD.Parser.Excuter.pdb

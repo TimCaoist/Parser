@@ -1,4 +1,7 @@
 ﻿using SD.Parser.Analyse.Models;
+using SD.Parser.Models;
+using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace SD.Parser.ParamParser
@@ -7,7 +10,7 @@ namespace SD.Parser.ParamParser
     {
         private readonly static string ExpressInvoke = "SD.Parser.Util.ExpressionInvoke.ExpInvoke";
 
-        public string Regular(string expression, ExpressionInfo expressionInfo)
+        public string Regular(string expression, ExpressionInfo expressionInfo, Expression exps, IEnumerable<Type> staticTypes)
         {
             string replace = string.Empty;
             var text = expressionInfo.Str + "(";
