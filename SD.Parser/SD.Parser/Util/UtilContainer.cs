@@ -2,6 +2,7 @@
 using SD.Parser.Analyse.Interface;
 using SD.Parser.Analyse.Models;
 using SD.Parser.ParamParser;
+using SD.Parser.PrecompilerFunc;
 using SD.Parser.Util.Interface;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace SD.Parser.Util
             Use<ParamParser.Interface.IParamRegular>(new ParamCenter());
             Use(new ExpressionRegular());
             Use(new FuncRegular());
+            Use<IPrecompilter>(new DefaultPrecompilter());
         }
 
         public static void UseExcuter(Func<IExcuter> create)
@@ -72,6 +74,26 @@ namespace SD.Parser.Util
             }
 
             return null;
+        }
+
+        public static void UseIfFunc()
+        {
+            IPrecompilter precompilter = Resolve<IPrecompilter>();
+            precompilter.Items.Add(new IFFuncItem());
+        }
+
+        public static void UseMath()
+        {
+            IPrecompilter precompilter = Resolve<IPrecompilter>();
+            precompilter.Items.Add(new SumItem());
+            precompilter.Items.Add(new AvgItem());
+            precompilter.Items.Add(new CountItem());
+        }
+
+        public static void UsePrecompilterFunc()
+        {
+            UseIfFunc();
+            UseMath();
         }
     }
 }

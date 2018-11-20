@@ -9,7 +9,7 @@ namespace SD.Parser.Analyse.Models
     {
         public virtual string Param => "@";
 
-        public virtual char[] SplitChar { get; } = new char[] { ' ', ',', ')', '(', ';' };
+        public virtual char[] SplitChar { get; } = new char[] { ' ', ',', ')', '(', ';', '>', '<', '*', '/' };
 
         public virtual string ExpressionString => "exp_";
 

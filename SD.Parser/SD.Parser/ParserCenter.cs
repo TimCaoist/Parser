@@ -2,6 +2,7 @@
 using SD.Parser.Analyse.Models;
 using SD.Parser.Models;
 using SD.Parser.ParamParser;
+using SD.Parser.PrecompilerFunc;
 using SD.Parser.Util;
 using SD.Parser.Util.Interface;
 using System;
@@ -63,10 +64,16 @@ namespace SD.Parser
 
             var infos = Analyse(expressionStr);
             var format = expressionStr;
-            if (infos.Any())
+            if (infos.Any(i => i.Mode != ParamMode.Param))
             {
                 var parser = UtilContainer.Resolve<ParamParser.Interface.IParamRegular>();
                 format = parser.Regular(format, infos, expression, GLOBAL_STATIC_TYPES);
+            }
+
+            IPrecompilter precompilter = UtilContainer.Resolve<IPrecompilter>();
+            if (precompilter.KeyWords.Any())
+            {
+                format = precompilter.Regular(format);
             }
 
             var excuterCreator = UtilContainer.Resolve<IExcuterCreator>();

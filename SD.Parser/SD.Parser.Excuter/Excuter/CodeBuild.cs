@@ -29,6 +29,8 @@ namespace SD.Parser.Excuter.Excuter
 
         private const string NameSpaceFormat = "using {0};";
 
+        private const string ReturnStr = "return";
+
         private readonly static IEnumerable<string> locations;
 
         static CodeBuild()
@@ -48,7 +50,7 @@ namespace SD.Parser.Excuter.Excuter
         public static string BuildCode(string className, string templeFileName, string expression, IEnumerable<ParamInfo> paramInfos, IEnumerable<string> nameSpacess)
         {
             var tempFile = File.ReadAllText(templeFileName);
-            tempFile = tempFile.Replace(CodePlaceHolder, expression);
+            tempFile = tempFile.Replace(CodePlaceHolder, expression.IndexOf(ReturnStr) > -1 ? expression : string.Concat(ReturnStr, " ", expression));
             tempFile = tempFile.Replace(ClassPlaceHolder, className);
             tempFile = tempFile.Replace(NameSpaceHolder, string.Join(string.Empty, nameSpacess.Distinct().Select(ns => string.Format(NameSpaceFormat, ns))));
             var paramStr = new StringBuilder();

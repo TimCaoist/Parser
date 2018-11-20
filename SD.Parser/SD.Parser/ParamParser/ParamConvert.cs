@@ -10,6 +10,8 @@ namespace SD.Parser.ParamParser
     {
         private const string GType = "`";
 
+        private const string ArrayType = "[]";
+
         private readonly static char[] GSplitChars = new[] { '[', ','};
 
         private const string IEnumerableTypeName = "IEnumerable<{0}>";
@@ -70,6 +72,10 @@ namespace SD.Parser.ParamParser
                 {
                     var strs = item.Type.FullName.Split(GSplitChars).Where(s => !string.IsNullOrEmpty(s));
                     item.TypeName = string.Format(IEnumerableTypeName, strs.ElementAt(6));
+                }
+                else if (item.Type.IsArray && item.Type.FullName.Contains(ArrayType))
+                {
+                    item.TypeName = string.Format(IEnumerableTypeName, item.Type.FullName.Replace(ArrayType, string.Empty));
                 }
                 else
                 {
